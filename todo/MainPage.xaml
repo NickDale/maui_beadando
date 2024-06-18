@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="todo.MainPage">
+
+    <!--<Grid Margin="20,35,20,20">
+        <Label Text="fsdfdsfdsfdsfds"></Label>
+    </Grid>-->
+    <Grid RowDefinitions="100, Auto,*" ColumnDefinitions=".75*,.25*" 
+          Padding="12"
+          RowSpacing="12"
+          ColumnSpacing="12"
+          >
+        <Image Grid.ColumnSpan="2" Source="todo_logo.png"
+               BackgroundColor="Transparent"/>
+
+        <Entry x:Name="todoEntry" Grid.Row="1" Placeholder="Írd be a következőt....!" />
+
+        <Button Grid.Row="1" Grid.Column="1" Text="Hozzáad" Clicked="add"/>
+
+        <CollectionView x:Name="todoView"  Grid.Row="2" Grid.ColumnSpan="2">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                </x:Array>
+            </CollectionView.ItemsSource>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Törlés" BackgroundColor="Red"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0, 5">
+                            <Frame>
+                                <Label Text="{Binding .}" FontSize="26"/>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
